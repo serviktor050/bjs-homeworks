@@ -52,6 +52,25 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
-    // код для задачи №3 писать здесь
-    //return averageMark;
+    let numberOfRatings = marks.length;
+    let averageMark;
+    let summOfMarks;
+    let marksDelete;  
+    
+    if (numberOfRatings <= 5) {
+        summOfMarks = marks.reduce(function(sum, current){
+            return sum + current;
+        });
+        averageMark = summOfMarks/numberOfRatings;
+        console.log(averageMark);
+    } else if (numberOfRatings >= 5) {
+        marksDelete = marks.slice(0, 5);
+        let numberOfRatingsDelete = marksDelete.length;
+        summOfMarks = marksDelete.reduce(function(sum, current){
+            return sum + current;
+        });
+        averageMark = summOfMarks/numberOfRatingsDelete;
+        console.log(`Введено для расчета более пяти оценок. Средний балл по пяти оценкам: ${averageMark}.`)
+  }
+    return averageMark;
 }
