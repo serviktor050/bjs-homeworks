@@ -32,3 +32,51 @@ function showSolutionsMessage(a,b,c) {
   }
 } 
 showSolutionsMessage(a,b,c)
+
+//Задача 2
+
+let data = {
+  algebra: [5, 4, 4, 3, 5, 5, 4, 4],
+  geometry:[4, 3, 5, 5, 4, 4, 5, 5],
+  russian: [4, 4, 4, 4, 3, 3, 5, 5],
+  physics: [4, 5, 4, 3, 5, 5, 4, 5],
+  music: [5, 5, 5, 4, 5, 4, 4, 5],
+  english: [4, 3, 5, 5, 4, 4, 5, 5],
+  poetry: [5, 4, 4, 3, 5, 5, 4, 4],
+  chemistry: [4, 5, 4, 3, 5, 5, 4, 5],
+  french: [4, 4, 4, 4, 3, 3, 5, 5],
+  biology: [5, 5, 5, 4, 5, 4, 4, 5]
+};
+
+function getAverageScore(data) {
+
+  function getAverageScoreSubject() {
+    let data2 = {};
+      for (let subject in data) {
+        let averageSubject = data[subject].reduce(function(sum, current) {
+        return sum + current;
+        },0)/data[subject].length;
+        data2[subject] = averageSubject;
+      }
+    return data2
+  }
+
+  getAverageScoreSubject()
+
+  let result = getAverageScoreSubject()
+  let average = [];
+
+  for(let score in result) { 
+    average.push(result[score]) 
+  }
+  
+  let summOfMarks = average.reduce(function(sum, current){
+    return sum + current;
+  });
+  let averageMark = summOfMarks/average.length;
+  result.average = averageMark;
+
+  return result
+}
+
+getAverageScore(data)
