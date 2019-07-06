@@ -80,3 +80,33 @@ function getAverageScore(data) {
 }
 
 getAverageScore(data)
+
+//Задача 3
+
+let secretData = {
+  aaa: 1,
+  bbb: 1
+}
+
+function getPersonData(secretData) {
+  function getNamebandit() {
+    let codeName = [];
+    for(let code in secretData) { 
+    codeName.push(secretData[code]) 
+  }
+    if (codeName[0] === 0 && codeName[1] === 0) {
+      return {firstName: 'Родриго', lastName: 'Родриго'}
+    } else if (codeName[0] === 1 && codeName[1] === 0) {
+      return {firstName: 'Эмильо', lastName: 'Родриго'}
+    } else if (codeName[0] === 1 && codeName[1] === 1) {
+      return {firstName: 'Эмильо', lastName: 'Эмильо'}
+    } else if (codeName[0] === 0 && codeName[1] === 1) {
+      return {firstName: 'Родриго', lastName: 'Эмильо'}
+    }
+  }
+  getNamebandit()
+
+  let result = getNamebandit();
+  console.log(result);
+}
+getPersonData(secretData)
