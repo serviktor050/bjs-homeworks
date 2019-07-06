@@ -23,6 +23,13 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    //return greeting;
+  if (name === undefined || name === null || name === '') {
+    greeting = 'Привет, мир! Меня зовут Аноним.';
+    console.log(greeting);
+  }else if (name !== null) {
+    greeting = `Привет, мир! Меня зовут ${name}.`;
+    console.log(greeting);
+  }
+  return greeting     
 }
+getGreeting(name)
