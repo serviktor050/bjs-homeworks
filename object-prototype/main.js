@@ -21,7 +21,17 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    // код для задачи №2 писать здесь
+    function Tiger() {
+        this.sound;
+        } 
+        Tiger.prototype = animal;
+        const tiger = new Tiger();
+        
+        if (animal === undefined) {
+          return null
+        } else if (animal !== undefined) {
+          return tiger.sound
+        }
 }
 
 function initCalculateStatement() {
