@@ -23,15 +23,15 @@ function initPrintAnimalSound() {
 function getAnimalSound(animal) {
     function Tiger() {
         this.sound;
-        } 
-        Tiger.prototype = animal;
-        const tiger = new Tiger();
+    } 
+    Tiger.prototype = animal;
+    const tiger = new Tiger();
         
-        if (animal === undefined) {
-          return null
-        } else if (animal !== undefined) {
-          return tiger.sound
-        }
+    if (animal === undefined) {
+        return null
+    } else if (animal !== undefined) {
+        return tiger.sound
+    }
 }
 
 function initCalculateStatement() {
@@ -45,5 +45,18 @@ function initCalculateStatement() {
 }
 
 function getAverageMark(marks) {
-    // код для задачи №3 писать здесь
+    let conversionMarks = [];
+    function conversion(marks) {
+        for (let i = 0; i < marks.length; i++) {
+            let mark = parseInt(marks[i]);
+            conversionMarks.push(mark);
+        }
+    return conversionMarks
+    }
+    let marks2 = conversion(marks);
+    let average = marks2.reduce(function(sum, current){
+        return sum + current;
+    })/marks2.length;
+    let roundedAverage = Math.round(average);
+    return roundedAverage
 }
