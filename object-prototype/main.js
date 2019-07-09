@@ -7,7 +7,20 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №1 писать здесь
+    let today = new Date();
+    let now = Date.now(today);
+    let birthdayMilliseconds = Number(new Date(birthday));
+    let diff = now - birthdayMilliseconds;
+    let age = Math.round(diff/31536000000);
+    console.log(age);
+
+    if (age < 18) {
+        console.log("Нет");
+        return "Нет"
+    }else if (age >= 18) {
+        console.log("Да");
+        return "Да"
+    }
 }
 
 function initPrintAnimalSound() {
