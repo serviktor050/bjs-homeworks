@@ -7,11 +7,12 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
+    let yearMilliseconds = 31536000000;
     let today = new Date();
     let now = Date.now(today);
     let birthdayMilliseconds = Number(new Date(birthday));
     let diff = now - birthdayMilliseconds;
-    let age = Math.round(diff/31536000000);
+    let age = Math.round(diff/yearMilliseconds);
     console.log(age);
 
     if (age < 18) {
@@ -32,16 +33,12 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    function Tiger() {
-        this.sound;
-    } 
-    Tiger.prototype = animal;
-    const tiger = new Tiger();
+    let sound = animal.sound;
         
     if (animal === undefined) {
         return null
     } else if (animal !== undefined) {
-        return tiger.sound
+        return sound
     }
 }
 
