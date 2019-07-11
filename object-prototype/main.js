@@ -64,10 +64,10 @@ function getAverageMark(marks) {
         }
     return conversionMarks
     }
-    let marks2 = conversion(marks);
-    let average = marks2.reduce(function(sum, current){
+    conversionMarks = conversion(marks);
+    let average = conversionMarks.reduce(function(sum, current){
         return sum + current;
-    })/marks2.length;
+    })/conversionMarks.length;
     let roundedAverage = Math.round(average);
     return roundedAverage
 }
