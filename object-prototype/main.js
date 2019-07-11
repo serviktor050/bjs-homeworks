@@ -15,11 +15,9 @@ function checkBirthday(birthday) {
     console.log(age);
 
     if (age < 18) {
-        console.log("Нет");
-        return "Нет"
+        return false
     }else if (age >= 18) {
-        console.log("Да");
-        return "Да"
+        return true
     }
 }
 
