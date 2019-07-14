@@ -238,3 +238,49 @@ staffOfStorm.takeDamage(400);
 console.log(staffOfStorm.durability);
 console.log(staffOfStorm.getDamage());
 console.log(staffOfStorm.isBroken());
+
+//Задача 3
+class StudentLog {
+  constructor(name) {
+    this.name = name;
+    this.grade = {};
+  }
+
+  getName() {
+    if (this.name === undefined || this.name === null) {
+      return 'Ошибка! Заполните поле "Имя"!'
+    }else if (this.name !== undefined || this.name !== null) {
+      return this.name
+    }
+  }
+
+  addGrade(grade, subject) {
+    if (this.grade.subject !== undefined) {
+      this.grade = [];      
+      if (grade >= 1 && grade <= 5) {
+        this.grade.push(grade);
+        return this.grade.length
+      }else {
+        return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.\nДобавлено оценок: ${this.grade.length}.`
+      }
+    }else {
+      this.grade = [];
+      if (grade >= 1 && grade <= 5) {
+        this.grade.push(grade);
+        return this.grade.length
+      }else {
+        return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.\nДобавлено оценок: ${this.grade.length}.`
+      }
+    }     
+  }
+}
+
+const log = new StudentLog('Олег Никифоров');
+console.log(log.getName());
+console.log(log.addGrade(5, 'algebra'));
+console.log(log.addGrade(4, 'russian'));
+console.log(log.addGrade(3, 'music'));
+console.log(log.addGrade(5, 'algebra'));
+console.log(log.addGrade(4, 'russian'));
+console.log(log.addGrade(3, 'music'));
+console.log(typeof(log.grade));
