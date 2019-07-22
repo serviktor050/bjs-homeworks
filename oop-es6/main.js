@@ -243,44 +243,75 @@ console.log(staffOfStorm.isBroken());
 class StudentLog {
   constructor(name) {
     this.name = name;
-    this.grade = {};
+    this.diary = {};
   }
 
   getName() {
-    if (this.name === undefined || this.name === null) {
+    if (!this.name) {
       return 'Ошибка! Заполните поле "Имя"!'
-    }else if (this.name !== undefined || this.name !== null) {
+    }else if (this.name) {
       return this.name
     }
   }
 
   addGrade(grade, subject) {
-    if (this.grade.subject !== undefined) {
-      this.grade = [];      
-      if (grade >= 1 && grade <= 5) {
-        this.grade.push(grade);
-        return this.grade.length
+    if (grade < 1 || grade > 5) {
+      return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.`
+      if (this.diary[subject] === undefined) {
+        return 0
       }else {
-        return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.\nДобавлено оценок: ${this.grade.length}.`
+        return this.diary[subject].push()
       }
+    }
+
+    if (this.diary[subject] === undefined) {
+      this.diary[subject] = [];
+      return this.diary[subject].push(grade)
     }else {
-      this.grade = [];
-      if (grade >= 1 && grade <= 5) {
-        this.grade.push(grade);
-        return this.grade.length
-      }else {
-        return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.\nДобавлено оценок: ${this.grade.length}.`
-      }
-    }     
+      return this.diary[subject].push(grade)
+    }
+  }
+
+  getAverageBySubject(subject) {
+    if (this.diary[subject] === undefined) {
+      return 0
+    }else {
+      let averageSubject = this.diary[subject].reduce(function(sum, current) {
+        return sum + current;
+        },0)/this.diary[subject].length;
+      return averageSubject
+    }
+  }
+
+  getTotalAverage() {
+    if (Object.keys(this.diary).length === 0) {
+      return 0
+    }else {
+      let averageScore = 0;
+      for (let subject in this.diary) {
+        averageScore += this.getAverageBySubject(subject);
+      };
+      return averageScore / Object.keys(this.diary).length;
+    }
   }
 }
 
 const log = new StudentLog('Олег Никифоров');
+
 console.log(log.getName());
+
 console.log(log.addGrade(5, 'algebra'));
 console.log(log.addGrade(4, 'russian'));
 console.log(log.addGrade(3, 'music'));
 console.log(log.addGrade(5, 'algebra'));
 console.log(log.addGrade(4, 'russian'));
 console.log(log.addGrade(3, 'music'));
-console.log(typeof(log.grade));
+console.log(log.addGrade(5, 'algebra'));
+console.log(log.addGrade(4, 'russian'));
+console.log(log.addGrade(3, 'music'));
+
+console.log(log.getAverageBySubject('algebra'))
+console.log(log.getAverageBySubject('russian'))
+console.log(log.getAverageBySubject('music'))
+
+console.log(log.getTotalAverage())
